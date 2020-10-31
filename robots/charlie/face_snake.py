@@ -35,10 +35,15 @@ class Face:
             return (x, y)
 
 
+def custom_range(n, reversed=False):
+    if reversed:
+        return range(n-1, -1, -1)
+    return range(n)
+
 def run_animation(brightness=100):
     face = Face(Orientation.RIGHT)
     for y in range(5):
-        for x in range(5):
+        for x in custom_range(5, y % 2 == 1):
             face.set_pixel(x, y, brightness)
             wait_for_seconds(0.1)
 
